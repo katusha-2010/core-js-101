@@ -166,12 +166,13 @@ function retry(func, attempts) {
 function logger(func, logFunc) {
   // throw new Error('Not implemented');
   function f(...args) {
-    const first = `${func.name}(${JSON.stringify(args).slice(1, JSON.stringify(args).length - 1)}) starts`;
-    const second = `${func.name}(${JSON.stringify(args).slice(1, -1)}) ends`;
+    const stringifiedArg = JSON.stringify(args);
+    const first = `${func.name}(${JSON.stringify(args).slice(1, stringifiedArg.length - 1)}) starts`;
+    const second = `${func.name}(${JSON.stringify(args).slice(1, stringifiedArg.length - 1)}) ends`;
     logFunc(first);
-    const result = func(...args);
+    func(...args);
     logFunc(second);
-    return result;
+    return func(...args);
   }
   return f;
 }
