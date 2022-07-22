@@ -170,9 +170,9 @@ function logger(func, logFunc) {
     const first = `${func.name}(${JSON.stringify(args).slice(1, stringifiedArg.length - 1)}) starts`;
     const second = `${func.name}(${JSON.stringify(args).slice(1, stringifiedArg.length - 1)}) ends`;
     logFunc(first);
-    func(...args);
+    const result = func(...args);
     logFunc(second);
-    return func(...args);
+    return result;
   }
   return f;
 }
