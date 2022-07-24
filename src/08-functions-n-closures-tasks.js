@@ -137,6 +137,18 @@ function retry(func, attempts) {
     return resultFunc;
   }
   return f;
+
+  // function recurs() {
+  //   att += 1;
+  //   const res = func();
+  //   if (res instanceof Error) {
+  //     if (att < attempts) {
+  //       return recurs();
+  //     }
+  //   }
+  //   return res;
+  // }
+  // return recurs;
 }
 
 
