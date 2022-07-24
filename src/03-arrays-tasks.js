@@ -585,7 +585,7 @@ function group(array, keySelector, valueSelector) {
   // throw new Error('Not implemented');
   const finalObj = array.reduce((object, el) => {
     const obj = object;
-    obj[keySelector(el)] = (obj[keySelector(el)] || []);
+    if (!obj[keySelector(el)]) { obj[keySelector(el)] = []; }
     obj[keySelector(el)].push(valueSelector(el));
     return obj;
   }, {});
